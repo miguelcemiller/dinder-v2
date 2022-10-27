@@ -2,8 +2,8 @@
 
 :root {
   --primary: #e12345;
-  --background: #232323;
-  --background-secondary: #2f2f2f;
+  --background: #1a1a1a;
+  --background-secondary: #272727;
   --background-hover: #373737;
 
   --text-primary: #dfdfdf;
@@ -119,6 +119,13 @@ input[type="password"] {
   object-fit: cover;
 
   position: relative;
+
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+}
+
+.image-upload-user:hover {
+  opacity: 0.6;
 }
 
 /* Loader container */
@@ -129,6 +136,8 @@ input[type="password"] {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  pointer-events: none;
 }
 
 .loader {
@@ -381,6 +390,13 @@ button.disabled {
   cursor: pointer;
 
   margin-top: 5px;
+
+  transition: color 0.2s ease-out;
+}
+
+.account-login:hover,
+.account-register:hover {
+  color: var(--text-primary);
 }
 
 /* Register Progress container */

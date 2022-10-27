@@ -7,12 +7,10 @@
     </div>
 
     <div class="image-upload-container" onclick="document.querySelector('#image-upload-js').click()">
-        <img class="image-upload-placeholder hidden" src="/static/images/assets/image.svg" draggable="false" />
+        <img class="image-upload-placeholder" src="/static/images/assets/image.svg" draggable="false" />
 
-        <img class="image-upload-user"
-            src="https://thehappypuppysite.com/wp-content/uploads/2018/06/Shiba-Inu-Wonderful-Watchdog-or-Family-Pet_-HP-long-1024x488.jpg"
-            draggable="false" />
-        <div class="loader-container">
+        <img class="image-upload-user hidden" src="" draggable="false" />
+        <div class="loader-container hidden">
             <div class="loader"></div>
         </div>
 
@@ -20,15 +18,15 @@
     </div>
 
     <div class="register-input-container-a">
-        <div class="input-loader-container">
-            <input class='hidden' type="text" placeholder="Breed" value="Chow Chow">
-            <span class="text-loader"></span>
+        <div id='input-breed' class="input-loader-container">
+            <input type="text" placeholder="Breed">
+            <span class="text-loader hidden"></span>
         </div>
-        <div class="input-loader-container">
+        <div id='input-coat-color' class="input-loader-container">
             <input type="text" placeholder="Coat Color">
             <span class="text-loader hidden"></span>
         </div>
-        <div class="input-loader-container">
+        <div id='input-body-size' class="input-loader-container">
             <input type="text" placeholder="Body Size">
             <span class="text-loader hidden"></span>
         </div>
