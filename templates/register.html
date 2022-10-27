@@ -1,0 +1,108 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="navbar">
+        <img src="/static/images/assets/dinder.svg" draggable="false">
+    </div>
+
+    <div class="image-upload-container" onclick="document.querySelector('#image-upload-js').click()">
+        <img class="image-upload-placeholder hidden" src="/static/images/assets/image.svg" draggable="false" />
+
+        <img class="image-upload-user"
+            src="https://thehappypuppysite.com/wp-content/uploads/2018/06/Shiba-Inu-Wonderful-Watchdog-or-Family-Pet_-HP-long-1024x488.jpg"
+            draggable="false" />
+        <div class="loader-container">
+            <div class="loader"></div>
+        </div>
+
+        <input id="image-upload-js" type="file" name="image" accept="image/*" style="display: none" />
+    </div>
+
+    <div class="register-input-container-a">
+        <div class="input-loader-container">
+            <input class='hidden' type="text" placeholder="Breed" value="Chow Chow">
+            <span class="text-loader"></span>
+        </div>
+        <div class="input-loader-container">
+            <input type="text" placeholder="Coat Color">
+            <span class="text-loader hidden"></span>
+        </div>
+        <div class="input-loader-container">
+            <input type="text" placeholder="Body Size">
+            <span class="text-loader hidden"></span>
+        </div>
+
+        <button id='register-input-container-a-button' class="disabled">Next</button>
+        <div class="account-login">I already have an account</div>
+        <div class="register-progress-container">
+            <div></div>
+        </div>
+    </div>
+
+    <div class="register-input-container-b hidden">
+        <input type="text" placeholder="Name" value="Marco">
+        <select required>
+            <option value="" disabled selected hidden>Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <select required>
+            <option value="" disabled selected hidden>Location</option>
+            <option value="Santa Cruz">Santa Cruz</option>
+            <option value="Pila">Pila</option>
+        </select>
+        <div class="select-age-container">
+            <select required>
+                <option value="" disabled selected hidden>Year</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <select required>
+                <option value="" disabled selected hidden>Month</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+        </div>
+
+        <button id='register-input-container-b-button' class="disabled">Next</button>
+        <div class="account-login">I already have an account</div>
+        <div class="register-progress-container">
+            <div></div>
+        </div>
+    </div>
+
+    <div class="register-input-container-c hidden">
+        <input type="text" placeholder="Username" value="marco_the_dog">
+        <input type="password" placeholder="Password">
+
+        <button id='register-input-container-c-button' class="disabled">Submit</button>
+        <div class="account-login">I already have an account</div>
+        <div class="register-progress-container">
+            <div></div>
+        </div>
+    </div>
+
+</div>
+
+<script src="/static/js/register.js"></script>
+
+{% endblock content %}
