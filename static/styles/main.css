@@ -61,6 +61,30 @@ body {
   margin-bottom: 40px;
 }
 
+/* LOGIN */
+/* Login Input Container */
+.hero-image {
+  margin-top: -35px;
+  margin-bottom: -15px;
+}
+.login-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-input-container > input[type="text"],
+input[type="password"] {
+  height: 42px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  background-color: var(--background-secondary);
+}
+
+.login-input-container > input[type="password"] {
+  margin-bottom: 0px;
+}
+
+/* REGISTER */
 /* Image upload container */
 .image-upload-container {
   background-color: var(--background-secondary);
@@ -346,8 +370,8 @@ button.disabled {
   pointer-events: none;
 }
 
-/* Account Login Text */
-.account-login {
+.account-login,
+.account-register {
   font-size: 12px;
   font-weight: 500;
   color: var(--text-secondary);
