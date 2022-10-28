@@ -1,0 +1,68 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="navbar home">
+        <img src="/static/images/assets/dinder.svg" draggable="false">
+        <div class="profile-message-container">
+            <img src="/static/images/assets/message.svg">
+            <div class="profile-image-container">
+                <img src="https://cdn.britannica.com/05/30105-004-644BE36D.jpg">
+            </div>
+        </div>
+    </div>
+
+    <div class="filters-container">
+        <select required>
+            <option value="Any Breed" selected>Any Breed</option>
+            <option value="Same Breed">Same Breed</option>
+            <option value="Cross Breed">Cross Breed</option>
+        </select>
+
+        <select required>
+            <option value="Any Location" selected>Any Location</option>
+            <option value="Santa Cruz">Santa Cruz</option>
+            <option value="Pila">Pila</option>
+        </select>
+    </div>
+
+    <div class="dog-card-container">
+        <div class="dog-image-container">
+            <img src="https://www.k9web.com/wp-content/uploads/2021/01/shih-tzu-dog-with-solid-white-color-780x607.jpg"
+                draggable="false">
+        </div>
+        <div class="dog-image-filter"></div>
+        <div class="dog-location-container">
+            <img src="/static/images/assets/location.svg" draggable="false">
+            <div>Santa Cruz</div>
+        </div>
+        <div class="dog-details-container">
+            <div>Marco</div>
+            <div><i>2 years, 5 months old</i></div>
+            <div><i>Chow Chow | Black | Small</i></div>
+        </div>
+    </div>
+    <div class="dog-card-behind"></div>
+
+    <div class="options-container">
+        <div class="reject-container">
+            <img src="/static/images/assets/reject.svg">
+        </div>
+        <div class="like-container">
+            <img src="/static/images/assets/like.svg">
+        </div>
+    </div>
+
+    <div class="offsprings-message-container hidden">
+        <button>Offsprings</button>
+        <button>Message</button>
+        <div class="reject-container">
+            <img src="/static/images/assets/reject.svg">
+        </div>
+    </div>
+
+</div>
+
+<script src="/static/js/home.js"></script>
+
+{% endblock content %}
