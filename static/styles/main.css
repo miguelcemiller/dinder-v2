@@ -63,6 +63,7 @@ body {
 
 .navbar.home {
   justify-content: space-between;
+  position: relative;
 }
 
 /* LOGIN */
@@ -421,39 +422,50 @@ button.disabled {
 }
 
 /* HOME */
-/* Profile Message Container */
-.profile-message-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.profile-message-container > img {
-  width: 40px;
-  height: 40px;
-
-  cursor: pointer;
-}
 
 /* Profile Image Container */
 .profile-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 40px;
   height: 40px;
   background-color: var(--background-secondary);
   border-radius: 50%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   cursor: pointer;
 }
 
 .profile-image-container > img {
+  padding-left: 1px;
+  padding-top: 1px;
   width: 35px;
   height: 35px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+/* Logout Container */
+.logout-container {
+  position: absolute;
+  right: 0;
+  top: 43px;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--background-secondary);
+  border-radius: 10px;
+  padding: 8px 14px;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease-out;
+}
+.logout-container:hover {
+  background-color: var(--background-hover);
 }
 
 /* Filters container */
@@ -539,11 +551,7 @@ button.disabled {
   width: calc(100% - 26px);
   height: calc(100% - 26px);
   border-radius: 15px;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 50%,
-    rgba(0, 0, 0, 0.7) 90%
-  );
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 90%);
 
   position: absolute;
   left: 50%;
@@ -623,14 +631,25 @@ button.disabled {
   z-index: -1;
 }
 
+/* Dog Not Found Container */
+.dog-not-found-container {
+  width: 100%;
+  height: 350px;
+  background-color: var(--background-secondary);
+  border-radius: 15px;
+
+  background-image: url("/static/images/assets/hero.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* Options Container */
 .options-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 40px;
-  position: absolute;
-  bottom: 70px;
-  left: 50%;
-  transform: translate(-50%, 0);
+  margin-top: 30px;
 }
 
 .reject-container,
@@ -673,6 +692,18 @@ button.disabled {
   height: auto;
 }
 
+.reject-container.disabled {
+  background-color: var(--background-secondary);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.like-container.disabled {
+  background-color: var(--primary);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 /* Offsprings Message Container */
 .offsprings-message-container {
   display: flex;
@@ -682,15 +713,98 @@ button.disabled {
 
   margin-top: 5px;
 }
-.offsprings-message-container > button:nth-child(2) {
-  margin-top: 18px;
+
+.offsprings-message-container > button {
+  margin-top: 30px;
 }
 
 .offsprings-message-container > .reject-container {
   margin-top: 18px;
 }
 
+/* Error Container */
+.error-container {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  text-align: center;
+
+  margin-top: 20px;
+}
+
+/* Carousel Slides */
+.carousel-container {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.75); /* Black w/ opacity */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.carousel-content {
+  width: 600px;
+  height: 400px;
+  position: relative;
+}
+
+.carousel-images-container {
+  width: 600px;
+  height: 400px;
+}
+
+.slide > img {
+  display: block;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.slide {
+  display: none;
+}
+
+.slide[data-active] {
+  display: block;
+}
+
+.carousel-button {
+  position: absolute;
+  font-size: 25px;
+  top: 50%;
+  border-radius: 2px;
+  padding: 1px 3px;
+  color: var(--text-secondary);
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.carousel-button:hover {
+  color: var(--text-primary);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.carousel-button.prev {
+  left: 1rem;
+}
+
+.carousel-button.next {
+  right: 1rem;
+}
+
 /* Utilities */
 .hidden {
   display: none;
+}
+
+a {
+  text-decoration: none;
 }

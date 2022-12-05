@@ -1,52 +1,74 @@
 {% extends 'main.html' %}
 {% block content %}
 
-<div class="container">
-    <div class="navbar home">
-        <img src="/static/images/assets/dinder.svg" draggable="false">
-        <div class="profile-message-container">
-            <img src="/static/images/assets/message.svg">
-            <div class="profile-image-container">
-                <img src="https://cdn.britannica.com/05/30105-004-644BE36D.jpg">
+<div class="container" user={{user.username}}>
+
+    <div class="carousel-container hidden">
+        <div class="carousel-content" data-carousel>
+            <div class="carousel-button prev" data-carousel-button="prev">&#8656;</div>
+            <div class="carousel-button next" data-carousel-button="next">&#8658;</div>
+
+            <div class="carousel-images-container" data-slides>
+                <!-- <div class="slide" data-active>
+                    <img src="https://source.unsplash.com/78A265wPiO4" draggable="false">
+                </div>
+                <div class="slide">
+                    <img src="https://source.unsplash.com/eOpewngf68w" draggable="false">
+                </div>
+                <div class="slide">
+                    <img src="https://source.unsplash.com/ndN00KmbJ1c" draggable="false">
+                </div> -->
             </div>
         </div>
     </div>
 
+    <div class="navbar home">
+        <img src="/static/images/assets/dinder.svg" draggable="false">
+        <div class="profile-image-container">
+            <img src='/static/images/dog-images/{{user.image_filename}}'>
+        </div>
+        <div class="logout-container hidden">
+            <div>Logout</div>
+        </div>
+    </div>
+
     <div class="filters-container">
-        <select required>
+        <select id="select-breed-js" required>
             <option value="Any Breed" selected>Any Breed</option>
             <option value="Same Breed">Same Breed</option>
             <option value="Cross Breed">Cross Breed</option>
         </select>
 
-        <select required>
+        <select id="select-location-js" required>
             <option value="Any Location" selected>Any Location</option>
-            <option value="Santa Cruz">Santa Cruz</option>
-            <option value="Pila">Pila</option>
+            <option value="Same Location">Same Location</option>
+            <option value="Other Location">Other Location</option>
         </select>
     </div>
 
     <div class="dog-card-container">
         <div class="dog-image-container">
-            <img src="https://www.k9web.com/wp-content/uploads/2021/01/shih-tzu-dog-with-solid-white-color-780x607.jpg"
-                draggable="false">
+            <img id="dog-image-js" src='' draggable="false">
         </div>
         <div class="dog-image-filter"></div>
         <div class="dog-location-container">
             <img src="/static/images/assets/location.svg" draggable="false">
-            <div>Santa Cruz</div>
+            <div id="dog-location-js"></div>
         </div>
         <div class="dog-details-container">
-            <div>Marco</div>
-            <div><i>2 years, 5 months old</i></div>
-            <div><i>Chow Chow | Black | Small</i></div>
+            <div id="dog-name-js"></div>
+            <div><i id="dog-age-js"></i></div>
+            <div><i id="dog-details-js"></i></div>
         </div>
     </div>
     <div class="dog-card-behind"></div>
 
+    <div class="dog-not-found-container hidden">
+    </div>
+
     <div class="options-container">
         <div class="reject-container">
-            <img src="/static/images/assets/reject.svg">
+            <img src="/static/images/assets/reject.svg" onclick="rejectClicked()">
         </div>
         <div class="like-container">
             <img src="/static/images/assets/like.svg">
@@ -54,12 +76,12 @@
     </div>
 
     <div class="offsprings-message-container hidden">
-        <button>Offsprings</button>
-        <button>Message</button>
-        <div class="reject-container">
+        <button id="offsprings-js">Offsprings</button>
+        <div class="reject-container" onclick="rejectClicked()">
             <img src="/static/images/assets/reject.svg">
         </div>
     </div>
+
 
 </div>
 

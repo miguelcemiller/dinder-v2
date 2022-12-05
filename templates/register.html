@@ -19,39 +19,53 @@
 
     <div class="register-input-container-a">
         <div id='input-breed' class="input-loader-container">
-            <input type="text" placeholder="Breed">
+            <input id='input-breed-js' type="text" placeholder="Breed">
             <span class="text-loader hidden"></span>
         </div>
         <div id='input-coat-color' class="input-loader-container">
-            <input type="text" placeholder="Coat Color">
+            <input id='input-coat-color-js' type="text" placeholder="Coat Color">
             <span class="text-loader hidden"></span>
         </div>
-        <div id='input-body-size' class="input-loader-container">
-            <input type="text" placeholder="Body Size">
+        <div id='input-type' class="input-loader-container">
+            <input id='input-type-js' type="text" placeholder="Type">
             <span class="text-loader hidden"></span>
         </div>
 
         <button id='register-input-container-a-button' class="disabled">Next</button>
-        <div class="account-login">I already have an account</div>
+        <a href="/">
+            <div class="account-login">I already have an account</div>
+        </a>
         <div class="register-progress-container">
             <div></div>
         </div>
     </div>
 
     <div class="register-input-container-b hidden">
-        <input type="text" placeholder="Name" value="Marco">
-        <select required>
+        <input id='input-name-js' type="text" placeholder="Name" onkeydown="inputChangeB()">
+        <select id="select-gender-js" onchange="selectChange()" required>
             <option value="" disabled selected hidden>Gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
-        <select required>
+        <select id="select-location-js" onchange="selectChange()" required>
             <option value="" disabled selected hidden>Location</option>
             <option value="Santa Cruz">Santa Cruz</option>
             <option value="Pila">Pila</option>
+            <option value="Los Baños">Los Baños</option>
+            <option value="Lumban">Lumban</option>
+            <option value="Calauan">Calauan</option>
+            <option value="Calamba">Calamba</option>
+            <option value="Bay">Bay</option>
+            <option value="Nagcarlan">Nagcarlan</option>
+            <option value="Kalayaan">Kalayaan</option>
+            <option value="Mabitac">Mabitac</option>
+            <option value="Rizal">Rizal</option>
+            <option value="Luisiana">Luisiana</option>
+            <option value="Alaminos">Alaminos</option>
+            <option value="Cabuyao">Cabuyao</option>
         </select>
         <div class="select-age-container">
-            <select required>
+            <select id='select-year-js' onchange="selectChange()" required>
                 <option value="" disabled selected hidden>Year</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -64,7 +78,7 @@
                 <option value="9">9</option>
                 <option value="10">10</option>
             </select>
-            <select required>
+            <select id='select-month-js' onchange="selectChange()" required>
                 <option value="" disabled selected hidden>Month</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -89,11 +103,11 @@
     </div>
 
     <div class="register-input-container-c hidden">
-        <input type="text" placeholder="Username" value="marco_the_dog">
-        <input type="password" placeholder="Password">
+        <input id='input-username-js' type="text" placeholder="Username" onkeydown="inputChangeC()">
+        <input id='input-password-js' type="password" placeholder="Password" onkeydown="inputChangeC()">
 
         <button id='register-input-container-c-button' class="disabled">Submit</button>
-        <div class="account-login">I already have an account</div>
+        <div class="account-login">I already have an accounttttt</div>
         <div class="register-progress-container">
             <div></div>
         </div>

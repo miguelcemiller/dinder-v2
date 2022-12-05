@@ -9,11 +9,17 @@
 
     <div class="login-input-container">
         <img class="hero-image" src="/static/images/assets/hero.png" draggable="false">
-        <input type="text" placeholder="Username" value="marco_the_dog">
-        <input type="password" placeholder="Password">
+        <input id="input-username-js" type="text" placeholder="Username" onkeydown="inputChange()">
+        <input id="input-password-js" type="password" placeholder="Password" onkeydown="inputChange()">
 
         <button id='login-input-container-button' class="disabled">Login</button>
-        <div class="account-register">Create an account</div>
+        <a href="/register">
+            <div class="account-register">Create an account</div>
+        </a>
+    </div>
+
+    <div class="error-container hidden">
+        <div>Incorrect username or password</div>
     </div>
 
 </div>
