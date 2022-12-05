@@ -100,6 +100,17 @@ selectBreed.addEventListener("change", async () => {
       if (dogsData.length == 0) {
         showDogNotFound();
       } else {
+        while (dogsClickedList.includes(dogsData[currIndex].username)) {
+          // only add if less than maxIndex
+          if (currIndex < maxIndex) {
+            currIndex += 1;
+          } else {
+            showDogNotFound();
+            return;
+          }
+        }
+
+        // while loop is false
         hideDogNotFound();
         setDogCardContainer(currIndex, dogsData);
       }
@@ -118,7 +129,7 @@ selectLocation.addEventListener("change", async () => {
     .then((response) => response.json())
     .then((data) => {
       dogsData = data;
-      console.log("dogsData: ", dogsData);
+      console.log("dogList: ", dogsData);
       // set maxIndex to length-1
       maxIndex = dogsData.length - 1;
       currIndex = 0;
@@ -126,6 +137,17 @@ selectLocation.addEventListener("change", async () => {
       if (dogsData.length == 0) {
         showDogNotFound();
       } else {
+        while (dogsClickedList.includes(dogsData[currIndex].username)) {
+          // only add if less than maxIndex
+          if (currIndex < maxIndex) {
+            currIndex += 1;
+          } else {
+            showDogNotFound();
+            return;
+          }
+        }
+
+        // while loop is false
         hideDogNotFound();
         setDogCardContainer(currIndex, dogsData);
       }
