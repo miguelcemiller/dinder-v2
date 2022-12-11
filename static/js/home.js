@@ -227,6 +227,16 @@ const rejectClicked = async function () {
     .catch((error) => {
       console.log(error);
     });
+
+  // I added this - to assign dogsClickedList value
+  await fetch(`/dog-clicked/${user}`, {
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      dogsClickedList = data;
+      console.log("dogsClickedList: ", dogsClickedList);
+    });
 };
 
 /* LIKE clicked */

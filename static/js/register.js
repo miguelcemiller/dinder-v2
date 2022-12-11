@@ -30,11 +30,6 @@ const registerInputContainerCButton = document.querySelector("#register-input-co
 
 /* Image upload */
 document.querySelector("#image-upload-js").addEventListener("change", function () {
-  // hide placeholder
-  imageUploadPlaceholder.classList.add("hidden");
-  // show image
-  imageUploadUser.classList.remove("hidden");
-
   const file = this.files[0];
   data.image = file;
 
@@ -50,6 +45,42 @@ document.querySelector("#image-upload-js").addEventListener("change", function (
   }
 
   reader.onloadend = async function () {
+    let formData = new FormData();
+    formData.append("classifier", "breed");
+    formData.append("image", data.image);
+    formData.append("imageFilename", "");
+
+    document.querySelector(".error-container.face").classList.add("hidden");
+
+    // Face Detector
+    let isFace = "";
+    await fetch("/face-detector", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        isFace = data.isFace;
+      });
+
+    console.log("isFace: ", isFace);
+
+    if (isFace) {
+      // show placeholder
+      imageUploadPlaceholder.classList.remove("hidden");
+      // hide image
+      imageUploadUser.classList.add("hidden");
+      document.querySelector(".error-container.face").classList.remove("hidden");
+      return;
+    }
+
+    // If isFace == false, continue
+
+    // hide placeholder
+    imageUploadPlaceholder.classList.add("hidden");
+    // show image
+    imageUploadUser.classList.remove("hidden");
+
     imageUploadUser.src = reader.result;
 
     // Show image loader
@@ -58,11 +89,6 @@ document.querySelector("#image-upload-js").addEventListener("change", function (
     // Breed
     inputBreed.classList.add("hidden");
     inputBreedLoader.classList.remove("hidden");
-
-    let formData = new FormData();
-    formData.append("classifier", "breed");
-    formData.append("image", data.image);
-    formData.append("imageFilename", "");
 
     // Predict Breed
     let imageFilename = "";
@@ -107,6 +133,14 @@ document.querySelector("#image-upload-js").addEventListener("change", function (
       .catch((error) => {
         console.log(error);
       });
+
+    // If pug
+
+    if (inputBreed.value == "Pug") {
+      inputType.setAttribute("value", "-");
+      textInputValidationA();
+      return;
+    }
 
     // Type
     inputType.classList.add("hidden");

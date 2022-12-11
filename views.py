@@ -159,7 +159,17 @@ def user_data(username):
         user = Users.query.filter_by(username=username).first()
 
         return user.as_dict()
-        
+
+@app.route('/face-detector', methods=['POST'])
+def face_detector_img():
+    if request.method == "POST":
+        image = request.files['image']
+
+        isFace = face_detector(image)
+        clear_temp()
+        return {
+            'isFace': isFace
+        }
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -223,7 +233,22 @@ def save():
 # offsprings images path
 @app.route('/offsprings-images-paths/<user_breed>/<user_coat_color>/<dog_breed>/<dog_coat_color>', methods=['GET'])
 def offsprings_images_paths(user_breed, user_coat_color, dog_breed, dog_coat_color):
-    folder = user_breed.lower() + '-' + user_coat_color.lower() + '-' + dog_breed.lower() + '-' + dog_coat_color.lower()
+    breed = user_breed.lower()
+    breed_arr = breed.split(' ')
+
+    dog = dog_breed.lower()
+    dog_arr = dog.split(' ')
+
+    if len(breed_arr) == 1 and len(dog_arr) == 1:
+        folder = user_breed.lower() + '-' + user_coat_color.lower() + '-' + dog_breed.lower() + '-' + dog_coat_color.lower()
+    elif len(breed_arr) == 2 and len(dog_arr) == 1:
+        folder = breed_arr[0].lower() + '-' + breed_arr[1].lower() + '-' + user_coat_color.lower() + '-' + dog_breed.lower() + '-' + dog_coat_color.lower()
+    elif len(breed_arr) == 1 and len(dog_arr) == 2:
+        folder = user_breed.lower() + '-' + user_coat_color.lower() + '-' + dog_arr[0].lower() + '-' + dog_arr[1].lower() + '-' + dog_coat_color.lower()
+    elif len(breed_arr) == 2 and len(dog_arr) == 2:
+        folder = breed_arr[0].lower() + '-' + breed_arr[1].lower() + '-' + user_coat_color.lower() + '-' + dog_arr[0].lower() + '-' + dog_arr[1].lower() + '-' + dog_coat_color.lower()
+
+
     print("Folder name:", folder)
     folder_path = join(dirname(realpath(__file__)), 'static/images/offsprings/') + folder
     offsprings_images_whole_paths = glob(folder_path+'/*')
